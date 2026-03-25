@@ -21,6 +21,8 @@ body{background:#121212;color:#eaeaea}
 .price-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
 .price{font-size:26px;font-weight:700;color:#ff3b30}
 .buy-btn{width:100%;background:#007aff;color:#fff;border:none;border-radius:14px;padding:16px;font-size:16px;font-weight:500;cursor:pointer}
+.buy-btn:hover{opacity:0.9}
+.buy-btn:active{transform:scale(0.98)}
 
 .section-title{font-size:17px;font-weight:500;margin:30px 0 14px}
 .footer{text-align:center;font-size:12px;color:#666;margin-top:40px;padding-bottom:20px}
@@ -173,8 +175,7 @@ body{background:#121212;color:#eaeaea}
   </div>
 
   <div class="footer">
-    青梧高速机场 © 2026 All Rights Reserved<br>
-    本页面仅为界面展示，不提供真实网络服务
+    青梧高速机场 © 2026 All Rights Reserved
   </div>
 </div>
 
@@ -185,14 +186,13 @@ function pay(price, alipayUrl) {
   let method = prompt(
     `请选择支付方式（金额：¥${price}）\n1 → 支付宝\n2 → 微信\n3 → USDT-TRC20`
   )
-
   if (method === '1') {
     window.open(alipayUrl)
   } else if (method === '2') {
     alert('微信支付请联系客服 @kio_037 获取收款码')
   } else if (method === '3') {
     alert(
-      `USDT-TRC20 地址：\nTB6qQqtvmvBUb3GZot4Nt9x4gdiPbuAUX\n\n金额：¥${price}\n请务必选择 TRC20 网络`
+      `USDT-TRC20 地址：\nTB6qQqtvmvBUb3GZot4Nt9x4gdiPbuAUXi\n\n金额：¥${price}\n请务必选择 TRC20 网络`
     )
   }
 }
