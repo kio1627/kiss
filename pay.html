@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>在线下单</title>
+<title>支付页面</title>
 
 <style>
 body{
@@ -38,7 +38,14 @@ button{
     font-size:16px;
 }
 
-.paybox{
+.pay{
+    margin-top:20px;
+    display:none;
+    padding-top:10px;
+    border-top:1px solid #eee;
+}
+
+.addr{
     background:#f0f0f0;
     padding:10px;
     border-radius:8px;
@@ -50,6 +57,11 @@ button{
     color:red;
     font-size:13px;
 }
+
+.copy{
+    background:#28a745;
+    margin-top:10px;
+}
 </style>
 </head>
 
@@ -57,10 +69,86 @@ button{
 
 <div class="box">
 
-<h2>在线下单</h2>
+<h2>订单支付</h2>
 
 <label>选择套餐</label>
 <select id="plan">
   <option value="18">初级套餐（18 USDT）</option>
   <option value="40">中级套餐（40 USDT）</option>
-  <option value="55">高级套餐（55 US
+  <option value="55">高级套餐（55 USDT）</option>
+</select>
+
+<label>联系方式</label>
+<input type="text" id="contact" placeholder="微信 / Telegram">
+
+<button onclick="showPay()">生成支付信息</button>
+
+<div id="pay" class="pay">
+
+    <h3>USDT-TRC20 收款</h3>
+
+    <p class="red">
+        ⚠️ 仅支持 TRC20（波场链）<br>
+        转错地址无法找回
+    </p>
+
+    <div class="addr" id="addr">
+        TPvLqenUdNwJKpyNsbH7hKAiJxkcNaNcvi
+    </div>
+
+    <button class="copy" onclick="copyAddr()">复制地址</button>
+
+    <p>应付金额：<span id="money"></span> USDT</p>
+
+    <input type="text" id="txid" placeholder="填写交易哈希（TxID）">
+
+    <button onclick="submitOrder()">提交订单</button>
+
+</div>
+
+</div>
+
+<script>
+let plan = document.getElementById("plan");
+
+function showPay(){
+    let contact = document.getElementById("contact").value;
+
+    if(!contact){
+        alert("请先填写联系方式");
+        return;
+    }
+
+    document.getElementById("pay").style.display = "block";
+    document.getElementById("money").innerText = plan.value;
+}
+
+function copyAddr(){
+    navigator.clipboard.writeText(
+        document.getElementById("addr").innerText
+    );
+    alert("地址已复制");
+}
+
+function submitOrder(){
+    let contact = document.getElementById("contact").value;
+    let txid = document.getElementById("txid").value;
+    let planText = plan.options[plan.selectedIndex].text;
+
+    if(!txid){
+        alert("请填写TxID");
+        return;
+    }
+
+    let msg =
+`新订单：
+套餐：${planText}
+联系方式：${contact}
+TxID：${txid}`;
+
+    window.open("https://t.me/你的用户名?text=" + encodeURIComponent(msg));
+}
+</script>
+
+</body>
+</html>
