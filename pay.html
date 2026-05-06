@@ -27,7 +27,6 @@ select,input,button{
     padding:12px;
     margin-top:12px;
     border-radius:8px;
-    border:1px solid #ddd;
     box-sizing:border-box;
 }
 
@@ -38,30 +37,22 @@ button{
     font-size:16px;
 }
 
-.pay{
+.step{
     margin-top:20px;
-    display:none;
-    padding-top:10px;
-    border-top:1px solid #eee;
+    padding:15px;
+    border-radius:10px;
+    background:#f7f7f7;
 }
 
 .addr{
-    background:#f0f0f0;
+    background:#eee;
     padding:10px;
     border-radius:8px;
     word-break:break-all;
-    margin-top:10px;
 }
 
-.red{
-    color:red;
-    font-size:13px;
-}
-
-.copy{
-    background:#28a745;
-    margin-top:10px;
-}
+.red{color:red;font-size:13px;}
+.green{color:green;}
 </style>
 </head>
 
@@ -71,6 +62,7 @@ button{
 
 <h2>订单支付</h2>
 
+<!-- STEP 1 -->
 <label>选择套餐</label>
 <select id="plan">
   <option value="18">初级套餐（18 USDT）</option>
@@ -81,26 +73,27 @@ button{
 <label>联系方式</label>
 <input type="text" id="contact" placeholder="微信 / Telegram">
 
-<button onclick="showPay()">生成支付信息</button>
+<button onclick="nextStep()">下一步：生成支付信息</button>
 
-<div id="pay" class="pay">
+<!-- STEP 2 -->
+<div id="pay" class="step" style="display:none;">
 
-    <h3>USDT-TRC20 收款</h3>
+    <h3 class="green">支付方式：USDT-TRC20</h3>
 
     <p class="red">
         ⚠️ 仅支持 TRC20（波场链）<br>
-        转错地址无法找回
+        转错链不到账
     </p>
+
+    <p>应付金额：<span id="money"></span> USDT</p>
 
     <div class="addr" id="addr">
         TPvLqenUdNwJKpyNsbH7hKAiJxkcNaNcvi
     </div>
 
-    <button class="copy" onclick="copyAddr()">复制地址</button>
+    <button onclick="copyAddr()">复制地址</button>
 
-    <p>应付金额：<span id="money"></span> USDT</p>
-
-    <input type="text" id="txid" placeholder="填写交易哈希（TxID）">
+    <input type="text" id="txid" placeholder="填写TxID">
 
     <button onclick="submitOrder()">提交订单</button>
 
@@ -111,7 +104,7 @@ button{
 <script>
 let plan = document.getElementById("plan");
 
-function showPay(){
+function nextStep(){
     let contact = document.getElementById("contact").value;
 
     if(!contact){
@@ -121,13 +114,14 @@ function showPay(){
 
     document.getElementById("pay").style.display = "block";
     document.getElementById("money").innerText = plan.value;
+
+    // 自动滚动到支付区（关键！）
+    document.getElementById("pay").scrollIntoView({behavior:"smooth"});
 }
 
 function copyAddr(){
-    navigator.clipboard.writeText(
-        document.getElementById("addr").innerText
-    );
-    alert("地址已复制");
+    navigator.clipboard.writeText(document.getElementById("addr").innerText);
+    alert("已复制地址");
 }
 
 function submitOrder(){
