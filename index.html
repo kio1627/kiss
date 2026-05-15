@@ -1,126 +1,299 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="zh">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>套餐选择</title>
+<title>易支付商铺</title>
 
 <style>
-body{
+
+*{
     margin:0;
+    padding:0;
+    box-sizing:border-box;
     font-family:Arial;
-    background:#f6f6f6;
 }
 
-.container{
-    max-width:520px;
-    margin:auto;
+body{
+    background:#f3f5f7;
+}
+
+.header{
+    background:linear-gradient(135deg,#6a11cb,#2575fc);
+    color:white;
+    text-align:center;
+    padding:22px;
+    font-size:26px;
+    font-weight:bold;
+}
+
+.banner{
+    background:white;
+    margin:15px;
+    border-radius:18px;
     padding:20px;
+    text-align:center;
+    box-shadow:0 2px 10px rgba(0,0,0,0.08);
 }
 
-h1{
-    text-align:center;
+.banner h2{
+    font-size:28px;
+    margin-bottom:10px;
 }
 
-.sub{
-    text-align:center;
+.banner p{
     color:#666;
-    margin-bottom:20px;
+}
+
+.box{
+    max-width:550px;
+    margin:auto;
+    padding:15px;
 }
 
 .card{
-    background:#fff;
-    padding:16px;
+    background:white;
+    border-radius:18px;
+    padding:20px;
+    margin-bottom:18px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.06);
+}
+
+.title{
+    font-size:22px;
+    font-weight:bold;
+    margin-bottom:18px;
+}
+
+.info{
+    margin-top:10px;
+    line-height:1.8;
+    color:#444;
+}
+
+.notice{
+    color:#ff3b30;
+    line-height:1.8;
+}
+
+select,input{
+    width:100%;
+    padding:15px;
     border-radius:14px;
-    margin-bottom:15px;
-    box-shadow:0 2px 8px rgba(0,0,0,0.06);
+    border:1px solid #ddd;
+    margin-top:14px;
+    font-size:16px;
+}
+
+.stock{
+    margin-top:14px;
+    color:#666;
+    font-size:16px;
 }
 
 .price{
-    font-size:20px;
+    margin-top:18px;
+    font-size:24px;
     font-weight:bold;
-    color:#e91e63;
-}
-
-.desc{
-    font-size:13px;
-    color:#666;
-    margin-top:8px;
-    line-height:1.5;
 }
 
 .btn{
     width:100%;
-    padding:12px;
-    margin-top:12px;
-    background:#007bff;
-    color:#fff;
+    padding:16px;
     border:none;
-    border-radius:10px;
-    font-size:16px;
+    border-radius:14px;
+    background:linear-gradient(135deg,#6a11cb,#2575fc);
+    color:white;
+    font-size:18px;
+    margin-top:20px;
 }
 
-.tag{
-    display:inline-block;
-    padding:4px 8px;
-    background:#eee;
-    border-radius:6px;
-    font-size:12px;
-    margin-top:6px;
+a{
+    text-decoration:none;
+    color:#2575fc;
 }
+
 </style>
 </head>
 
 <body>
 
-<div class="container">
-
-<h1>套餐中心</h1>
-<div class="sub">简单 · 快速 · 即开即用</div>
-
-<!-- 套餐1 -->
-<div class="card">
-    <div class="price">128 元 - 初级套餐</div>
-    <div class="tag">入门推荐</div>
-    <div class="desc">
-        基础内容访问<br>
-        标准体验服务<br>
-        单设备使用
-    </div>
-    <button class="btn" onclick="buy('128')">立即购买</button>
+<div class="header">
+易支付商铺
 </div>
 
-<!-- 套餐2 -->
-<div class="card">
-    <div class="price">288 元 - 中级套餐</div>
-    <div class="tag">热门选择</div>
-    <div class="desc">
-        进阶内容权限<br>
-        多设备支持<br>
-        更快体验服务
-    </div>
-    <button class="btn" onclick="buy('288')">立即购买</button>
+<div class="banner">
+<h2>账号商城平台</h2>
+<p>稳定 / 快速 / 自动处理</p>
 </div>
 
-<!-- 套餐3 -->
+<div class="box">
+
 <div class="card">
-    <div class="price">399 元 - 高级套餐</div>
-    <div class="tag">VIP推荐</div>
-    <div class="desc">
-        全部内容权限<br>
-        VIP专属服务<br>
-        优先体验通道
-    </div>
-    <button class="btn" onclick="buy('399')">立即购买</button>
+
+<div class="title">
+商户信息
+</div>
+
+<div class="info">
+商户名称：易支付商铺
+</div>
+
+<div class="info">
+Telegram客服：
+<a href="https://t.me/kio_037" target="_blank">
+点击联系
+</a>
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="title">
+公告
+</div>
+
+<div class="notice">
+下单后请及时完成支付。<br>
+支付完成联系客服处理订单。
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="title">
+选择商品
+</div>
+
+<select id="category" onchange="changeProducts()">
+
+<option>微信业务</option>
+<option>支付宝业务</option>
+<option>抖音业务</option>
+
+</select>
+
+<select id="product"></select>
+
+<div class="stock" id="stock">
+库存：155
+</div>
+
+<input type="number" id="qty" value="1" min="1">
+
+<div class="price">
+总价格：
+<span id="total">58</span>
+USDT
+</div>
+
+<button class="btn" onclick="goPay()">
+立即支付
+</button>
+
 </div>
 
 </div>
 
 <script>
-function buy(price){
-    // 把价格传到支付页
-    window.location.href = "pay.html?price=" + price;
+
+const data = {
+
+"微信业务":[
+
+{name:"微信满月实名号带支付",price:58,stock:155},
+{name:"微信半年号实名带支付",price:80,stock:55},
+{name:"微信一年号实名带支付",price:100,stock:27},
+{name:"微信年号实名",price:42,stock:33}
+
+],
+
+"支付宝业务":[
+
+{name:"支付宝V2直登号",price:68,stock:66},
+{name:"支付宝V3直登号",price:88,stock:28}
+
+],
+
+"抖音业务":[
+
+{name:"抖音实名号",price:36,stock:87},
+{name:"抖音直播号",price:52,stock:31},
+{name:"抖音万粉账号",price:100,stock:12}
+
+]
+
+};
+
+const category = document.getElementById("category");
+const product = document.getElementById("product");
+const qty = document.getElementById("qty");
+const total = document.getElementById("total");
+const stock = document.getElementById("stock");
+
+function changeProducts(){
+
+let list = data[category.value];
+
+product.innerHTML = "";
+
+list.forEach(item=>{
+
+let option = document.createElement("option");
+
+option.value = item.price;
+
+option.text =
+item.name + " - " + item.price + " USDT";
+
+option.dataset.stock = item.stock;
+
+product.appendChild(option);
+
+});
+
+updatePrice();
+
 }
+
+function updatePrice(){
+
+let price = Number(product.value);
+
+let quantity = Number(qty.value);
+
+total.innerText = price * quantity;
+
+let current =
+product.options[product.selectedIndex];
+
+stock.innerText =
+"库存：" + current.dataset.stock;
+
+}
+
+product.addEventListener("change",updatePrice);
+
+qty.addEventListener("input",updatePrice);
+
+function goPay(){
+
+let amount = total.innerText;
+
+let order =
+Math.floor(Math.random()*999999999);
+
+window.location.href =
+"pay.html?price=" + amount +
+"&order=" + order;
+
+}
+
+changeProducts();
+
 </script>
 
 </body>
