@@ -43,6 +43,12 @@ body{
     box-shadow:0 10px 30px rgba(0,0,0,0.08);
 }
 
+.notice-title{
+    color:#ff3b30;
+    font-size:28px;
+    font-weight:bold;
+}
+
 .price{
     font-size:44px;
     font-weight:bold;
@@ -73,6 +79,7 @@ body{
     color:white;
     font-size:18px;
     margin-top:20px;
+    cursor:pointer;
 }
 
 .wallets{
@@ -91,6 +98,7 @@ body{
     margin-top:24px;
     color:#ff3b30;
     line-height:1.8;
+    font-size:15px;
 }
 
 </style>
@@ -106,7 +114,9 @@ USDT TRC20 支付
 
 <div class="card">
 
-<h2>等待支付</h2>
+<h2 class="notice-title">
+请使用 USDT-TRC20 支付
+</h2>
 
 <div class="price">
 <span id="money"></span>
@@ -143,6 +153,7 @@ TronLink
 </div>
 
 <div class="tip">
+请勿支付非TRC20资产。<br>
 支付完成后请联系TG客服处理订单。
 </div>
 
