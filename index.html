@@ -1,6 +1,6 @@
 <!-- index.html -->
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,63 +12,78 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial;
+    font-family:Arial,sans-serif;
 }
 
 body{
-    background:#f3f5f7;
+    background:linear-gradient(180deg,#eef2ff,#f8fafc);
+    color:#222;
 }
 
 .header{
-    background:linear-gradient(135deg,#6a11cb,#2575fc);
-    color:white;
+    position:relative;
+    background:white;
+    padding:18px;
     text-align:center;
-    padding:22px;
     font-size:26px;
     font-weight:bold;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+}
+
+.query-btn{
+    position:absolute;
+    right:15px;
+    top:15px;
+    background:linear-gradient(135deg,#7c3aed,#2563eb);
+    color:white;
+    padding:8px 14px;
+    border-radius:12px;
+    text-decoration:none;
+    font-size:14px;
 }
 
 .banner{
-    background:white;
+    background:linear-gradient(135deg,#7c3aed,#2563eb);
     margin:15px;
-    border-radius:18px;
-    padding:20px;
+    border-radius:24px;
+    padding:40px 20px;
     text-align:center;
-    box-shadow:0 2px 10px rgba(0,0,0,0.08);
+    color:white;
+    box-shadow:0 10px 30px rgba(59,130,246,0.15);
 }
 
-.banner h2{
-    font-size:28px;
-    margin-bottom:10px;
+.banner h1{
+    font-size:34px;
 }
 
 .banner p{
-    color:#666;
+    margin-top:10px;
+    font-size:16px;
+    opacity:0.95;
 }
 
-.box{
-    max-width:550px;
+.container{
+    max-width:600px;
     margin:auto;
     padding:15px;
 }
 
 .card{
     background:white;
-    border-radius:18px;
-    padding:20px;
+    border-radius:24px;
+    padding:22px;
     margin-bottom:18px;
-    box-shadow:0 2px 10px rgba(0,0,0,0.06);
+    box-shadow:0 8px 25px rgba(15,23,42,0.08);
 }
 
 .title{
     font-size:22px;
     font-weight:bold;
-    margin-bottom:18px;
+    margin-bottom:16px;
 }
 
 .info{
-    margin-top:10px;
-    line-height:1.8;
+    line-height:1.9;
     color:#444;
 }
 
@@ -77,13 +92,15 @@ body{
     line-height:1.8;
 }
 
-select,input{
+select,
+input{
     width:100%;
     padding:15px;
     border-radius:14px;
     border:1px solid #ddd;
     margin-top:14px;
     font-size:16px;
+    background:#fafafa;
 }
 
 .stock{
@@ -93,8 +110,8 @@ select,input{
 }
 
 .price{
-    margin-top:18px;
-    font-size:24px;
+    margin-top:20px;
+    font-size:26px;
     font-weight:bold;
 }
 
@@ -102,16 +119,21 @@ select,input{
     width:100%;
     padding:16px;
     border:none;
-    border-radius:14px;
-    background:linear-gradient(135deg,#6a11cb,#2575fc);
+    border-radius:16px;
+    background:linear-gradient(135deg,#7c3aed,#2563eb);
     color:white;
     font-size:18px;
     margin-top:20px;
+    cursor:pointer;
+}
+
+.btn:hover{
+    opacity:0.95;
 }
 
 a{
     text-decoration:none;
-    color:#2575fc;
+    color:#2563eb;
 }
 
 </style>
@@ -121,14 +143,19 @@ a{
 
 <div class="header">
 易支付商铺
+
+<a href="#" class="query-btn">
+订单查询
+</a>
+
 </div>
 
 <div class="banner">
-<h2>账号商城平台</h2>
-<p>稳定 / 快速 / 自动处理</p>
+<h1>账号商城平台</h1>
+<p>高端账号交易平台 · 安全稳定 · 快速处理</p>
 </div>
 
-<div class="box">
+<div class="container">
 
 <div class="card">
 
@@ -165,7 +192,7 @@ Telegram客服：
 <div class="card">
 
 <div class="title">
-选择商品
+🔥 热门商品
 </div>
 
 <select id="category" onchange="changeProducts()">
@@ -191,7 +218,7 @@ USDT
 </div>
 
 <button class="btn" onclick="goPay()">
-立即支付
+立即下单支付
 </button>
 
 </div>
