@@ -1,181 +1,206 @@
 <!DOCTYPE html>
 <html lang="zh">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>安全支付中心</title>
 
 <style>
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
 }
 
 body{
-    background:
-    linear-gradient(180deg,#eef2ff,#f8fafc);
-    min-height:100vh;
+
+background:
+linear-gradient(180deg,#eef2ff,#f8fafc);
+
+min-height:100vh;
 }
 
 .header{
-    background:
-    linear-gradient(135deg,#7c3aed,#2563eb);
-    color:white;
-    text-align:center;
-    padding:24px;
-    font-size:26px;
-    font-weight:bold;
-    box-shadow:0 5px 20px rgba(0,0,0,0.12);
+
+background:
+linear-gradient(135deg,#4f46e5,#2563eb);
+
+color:white;
+
+text-align:center;
+
+padding:24px;
+
+font-size:26px;
+
+font-weight:bold;
+
+box-shadow:
+0 5px 20px rgba(0,0,0,0.12);
 }
 
 .box{
-    max-width:550px;
-    margin:auto;
-    padding:20px;
+
+max-width:550px;
+
+margin:auto;
+
+padding:20px;
 }
 
 .card{
 
-    background:rgba(255,255,255,0.85);
+background:
+rgba(255,255,255,0.88);
 
-    backdrop-filter:blur(12px);
+backdrop-filter:blur(12px);
 
-    border:1px solid rgba(255,255,255,0.5);
+border:1px solid rgba(255,255,255,0.5);
 
-    border-radius:30px;
+border-radius:30px;
 
-    padding:30px;
+padding:30px;
 
-    margin-top:25px;
+margin-top:25px;
 
-    text-align:center;
+text-align:center;
 
-    box-shadow:
-    0 15px 40px rgba(0,0,0,0.08);
+box-shadow:
+0 15px 40px rgba(0,0,0,0.08);
 }
 
 .notice{
 
-    color:#ff3b30;
+color:#ef4444;
 
-    font-size:28px;
+font-size:28px;
 
-    font-weight:bold;
+font-weight:bold;
+
+line-height:1.5;
 }
 
 .pay-label{
 
-    margin-top:20px;
+margin-top:22px;
 
-    color:#666;
+color:#6b7280;
 
-    font-size:15px;
+font-size:15px;
 }
 
 .price{
 
-    font-size:52px;
+font-size:54px;
 
-    font-weight:bold;
+font-weight:bold;
 
-    margin-top:10px;
+margin-top:10px;
 
-    color:#111827;
+color:#111827;
 }
 
 .order{
 
-    margin-top:16px;
+margin-top:16px;
 
-    color:#6b7280;
+color:#6b7280;
 
-    font-size:16px;
-}
-
-.address{
-
-    margin-top:25px;
-
-    background:#f3f4f6;
-
-    padding:20px;
-
-    border-radius:18px;
-
-    word-break:break-all;
-
-    font-size:15px;
-
-    color:#111827;
-}
-
-.btn{
-
-    width:100%;
-
-    padding:17px;
-
-    border:none;
-
-    border-radius:18px;
-
-    background:
-    linear-gradient(135deg,#7c3aed,#2563eb);
-
-    color:white;
-
-    font-size:18px;
-
-    margin-top:22px;
-
-    cursor:pointer;
-
-    box-shadow:
-    0 8px 20px rgba(37,99,235,0.3);
-}
-
-.wallets{
-
-    margin-top:30px;
-}
-
-.wallet{
-
-    background:white;
-
-    padding:16px;
-
-    border-radius:18px;
-
-    margin-top:14px;
-
-    font-size:17px;
-
-    box-shadow:
-    0 5px 15px rgba(0,0,0,0.05);
-}
-
-.tip{
-
-    margin-top:26px;
-
-    color:#ff3b30;
-
-    line-height:1.9;
-
-    font-size:15px;
+font-size:16px;
 }
 
 .safe{
 
-    margin-top:18px;
+margin-top:18px;
 
-    color:#10b981;
+color:#10b981;
 
-    font-size:15px;
+font-size:15px;
+}
+
+.address{
+
+margin-top:26px;
+
+background:#f3f4f6;
+
+padding:20px;
+
+border-radius:20px;
+
+word-break:break-all;
+
+font-size:15px;
+
+color:#111827;
+
+line-height:1.8;
+}
+
+.btn{
+
+width:100%;
+
+height:58px;
+
+border:none;
+
+border-radius:18px;
+
+background:
+linear-gradient(135deg,#4f46e5,#2563eb);
+
+color:white;
+
+font-size:18px;
+
+margin-top:24px;
+
+cursor:pointer;
+
+box-shadow:
+0 8px 20px rgba(37,99,235,0.25);
+}
+
+.btn:active{
+
+transform:scale(0.98);
+}
+
+.wallets{
+
+margin-top:30px;
+}
+
+.wallet{
+
+background:white;
+
+padding:16px;
+
+border-radius:18px;
+
+margin-top:14px;
+
+font-size:17px;
+
+box-shadow:
+0 5px 15px rgba(0,0,0,0.05);
+}
+
+.tip{
+
+margin-top:26px;
+
+color:#ef4444;
+
+line-height:1.9;
+
+font-size:15px;
 }
 
 </style>
@@ -200,13 +225,22 @@ body{
 </div>
 
 <div class="price">
-<span id="money"></span>
+
+<span id="money">
+0
+</span>
+
 USDT
+
 </div>
 
 <div class="order">
+
 订单号：
-<span id="order"></span>
+<span id="order">
+000000
+</span>
+
 </div>
 
 <div class="safe">
@@ -238,8 +272,7 @@ TPvLqenUdNwJKpyNsbH7hKAiJxkcNaNcvi
 </div>
 
 <div class="tip">
-请勿支付非TRC20资产。<br>
-支付完成后请截图订单联系TG客服。
+请勿支付非TRC20资产。
 </div>
 
 </div>
@@ -249,7 +282,9 @@ TPvLqenUdNwJKpyNsbH7hKAiJxkcNaNcvi
 <script>
 
 const params =
-new URLSearchParams(window.location.search);
+new URLSearchParams(
+window.location.search
+);
 
 const price =
 params.get("price");
@@ -268,7 +303,18 @@ function copyAddress(){
 let text =
 document.getElementById("wallet").innerText;
 
-navigator.clipboard.writeText(text);
+let input =
+document.createElement("input");
+
+input.value = text;
+
+document.body.appendChild(input);
+
+input.select();
+
+document.execCommand("copy");
+
+document.body.removeChild(input);
 
 alert("钱包地址已复制");
 
